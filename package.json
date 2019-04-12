@@ -1,8 +1,8 @@
 {
   "name": "vuejs-weekpicker",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "private": false,
-  "description": "A little component to pick a week number",
+  "description": "A little vue component to pick a week number",
   "author": {
     "name": "Frédéric Blanc",
     "email": "frederic.blanc@itanea.fr",
@@ -21,6 +21,13 @@
   },
   "files": [
     "dist/*"
+  ],
+  "keywords": [
+    "itanea",
+    "vue",
+    "datepicker",
+    "weekpicker",
+    "week"
   ],
   "dependencies": {
     "core-js": "^2.6.5",
