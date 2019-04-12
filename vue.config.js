@@ -6,5 +6,7 @@ module.exports = {
         'fr'
       ]
     }
-  }
+  },
+
+  lintOnSave: undefined
 }
