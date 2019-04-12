@@ -36,9 +36,9 @@ Nota : param week-picker-locale is not required.
 
 To do list for this component :
 
-[X] Add under week selector the from date and to date. Example : for the week 2019/15, the result will be 'From 20190408 To 20190414'
-[ ] Add ability to hide from/to information
-[ ] Add VueX implementation to help to communicate with parent and others components
+- [X] Add under week selector the from date and to date. Example : for the week 2019/15, the result will be 'From 20190408 To 20190414'
+- [ ] Add ability to hide from/to information
+- [ ] Add VueX implementation to help to communicate with parent and others components
 
 ## Changelog
 - 20190412 v0.2.0 Add 'from/to' functionnality
