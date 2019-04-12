@@ -1,12 +1,27 @@
 {
   "name": "vuejs-weekpicker",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.7",
+  "private": false,
+  "description": "A little component to pick a week number",
+  "author": {
+    "name": "Frédéric Blanc",
+    "email": "frederic.blanc@itanea.fr",
+    "url": "https://www/itanea.fr"
+  },
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itanea/vuejs-weekpicker.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "webpack -p",
     "lint": "vue-cli-service lint"
   },
+  "files": [
+    "dist/*"
+  ],
   "dependencies": {
     "core-js": "^2.6.5",
     "moment": "^2.24.0",
@@ -29,7 +44,8 @@
     "vue-cli-plugin-moment": "^0.1.1",
     "vue-cli-plugin-vuetify": "^0.5.0",
     "vue-template-compiler": "^2.5.21",
-    "vuetify-loader": "^1.0.5"
+    "vuetify-loader": "^1.0.5",
+    "webpack-cli": "^3.3.0"
   },
   "eslintConfig": {
     "root": true,
