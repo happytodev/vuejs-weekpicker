@@ -10,7 +10,7 @@ Here is what this component looks like
 In your main file app.js, add these lines :
 
 ```
-import WeekPicker from 'vuejs-weekpicker/dist'
+import WeekPicker from 'vuejs-weekpicker'
 Vue.use(WeekPicker)
 ```
 
