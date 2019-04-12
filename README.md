@@ -27,7 +27,7 @@ Just call the week-picker tag :
 
 To do list for this component :
 
-[] Add under week selector the from date and to date. Example : for the week 2019/15, the result will be 'From 20190408 To 20190414'
+[ ] Add under week selector the from date and to date. Example : for the week 2019/15, the result will be 'From 20190408 To 20190414'
 
 
 ## Changelog
