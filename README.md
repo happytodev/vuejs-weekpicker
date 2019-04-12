@@ -26,10 +26,11 @@ By default, the locale is english 'en'
 You can change the locale with this syntax :
 
 ```
-<week-picker weekPickerLocale='fr'></week-picker>
+<week-picker week-picker-locale='fr'></week-picker>
 ```
 
 For now, only english and french are supported.
+Nota : param week-picker-locale is not required.
 
 ## Roadmap
 
