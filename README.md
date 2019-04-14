@@ -23,6 +23,7 @@ Just call the week-picker tag :
 ```
 
 By default, the locale is english 'en'
+
 You can change the locale with this syntax :
 
 ```
@@ -30,15 +31,17 @@ You can change the locale with this syntax :
 ```
 
 For now, only english and french are supported.
+
 Nota : param week-picker-locale is not required.
 
 ## Roadmap
 
 To do list for this component :
 
-[X] Add under week selector the from date and to date. Example : for the week 2019/15, the result will be 'From 20190408 To 20190414'
-[ ] Add ability to hide from/to information
-[ ] Add VueX implementation to help to communicate with parent and others components
+- [X] Add under week selector the from date and to date. Example : for the week 2019/15, the result will be 'From 20190408 To 20190414'
+- [ ] Add ability to hide from/to information
+- [ ] Add VueX implementation to help to communicate with parent and others components
+- [ ] Add ability to change component color to match with others components
 
 ## Changelog
 - 20190412 v0.2.0 Add 'from/to' functionnality
