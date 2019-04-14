@@ -37,6 +37,12 @@ new Vue({
 }).$mount('#app')
 ```
 
+In your src folder add a folder named 'store'.
+
+In this folder add a file store.js
+
+In this file, you can copy the code you can found [here](https://github.com/itanea/vuejs-weekpicker/blob/master/src/store/store.js)
+
 ## How to use it 
 
 Just call the week-picker tag :
@@ -48,7 +54,7 @@ Just call the week-picker tag :
 or like this 
 
 ```
-<week-picker />>
+<week-picker />
 ```
 
 By default, the locale is english 'en'
