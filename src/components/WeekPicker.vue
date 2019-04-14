@@ -174,6 +174,7 @@ export default {
     this.initializeYearsArray()
     this.initializeWeeksArray()
     this.getWeekSuffix()
+    this.getWeekSelectedPeriod()
   },
   computed: {
     // ...Vuex.mapGetters(['actualYear', 'weekNumber', 'weekSelectedPeriod']),
