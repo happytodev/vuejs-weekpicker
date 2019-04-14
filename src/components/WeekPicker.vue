@@ -39,7 +39,7 @@
         <div class="text-xs-center">
           <div>
             <v-select
-              v-model="weeknumber"
+              v-model="weekNumber"
               :items="weeks"
               menu-props="auto"
               label="Select"
@@ -160,28 +160,51 @@ export default {
   data: () => ({
     activateWeekSuffix: false,
     activateWeekPreprendIcon: true,
-    actualYear: '',
     menu: false,
     numberOfWeekThisYear: '',
     separator: '/',
     weeks: [],
-    weeknumber: moment().week(),
-    weekSelectedPeriod: '', // Give user details on selected week
     weekSuffix: '',
     years: []
   }),
   created: function () {
     moment.locale(this.weekPickerLocale)
     moment().format('L')
-    this.actualYear = new Date().getFullYear()
     this.numberOfWeekThisYear = this.getNumberOfWeekThisYear()
     this.initializeYearsArray()
     this.initializeWeeksArray()
     this.getWeekSuffix()
   },
+  computed: {
+    // ...Vuex.mapGetters(['actualYear', 'weekNumber', 'weekSelectedPeriod']),
+    actualYear: {
+      get () {
+        return this.$store.state.actualYear
+      },
+      set (value) {
+        this.$store.dispatch('updateActualYear', value)
+      }
+    },
+    weekNumber: {
+      get () {
+        return this.$store.state.weekNumber
+      },
+      set (value) {
+        this.$store.dispatch('updateWeekNumber', value)
+      }
+    },
+    weekSelectedPeriod: {
+      get () {
+        return this.$store.state.weekSelectedPeriod
+      },
+      set (value) {
+        this.$store.dispatch('updateWeekSelectedPeriod', value)
+      }
+    }
+  },
   watch: {
     // If weekNumber change => update the info text from / to
-    weeknumber: function () {
+    weekNumber: function () {
       this.getWeekSelectedPeriod()
     },
     // If actualYear change => update the info text from / to
@@ -196,7 +219,7 @@ export default {
       if (year) {
         yearToCompute = year
       } else {
-        yearToCompute = this.actualYear
+        yearToCompute = this.$store.state.actualYear
       }
 
       this.numberOfWeekThisYear = moment().isoWeekYear(yearToCompute).isoWeeksInYear()
@@ -218,7 +241,7 @@ export default {
       this.weeks = []
       var i = ''
       var numberOfWeeksForTheSelectedYear = ''
-      numberOfWeeksForTheSelectedYear = this.getNumberOfWeekThisYear(this.actualYear)
+      numberOfWeeksForTheSelectedYear = this.getNumberOfWeekThisYear(this.$store.state.actualYear)
       for (i = 1; i < numberOfWeeksForTheSelectedYear + 1; i++) {
         this.weeks.push(i)
       }
@@ -226,39 +249,39 @@ export default {
     initializeYearsArray: function (event) {
       var i = ''
       for (i = 3; i > -1; i--) {
-        this.years.push(this.actualYear + i)
+        this.years.push(this.$store.state.actualYear + i)
       }
       for (i = 1; i < 2; i++) {
-        this.years.push(this.actualYear - i)
+        this.years.push(this.$store.state.actualYear - i)
       }
     },
     nextWeek: function () {
-      this.weeknumber += 1
-      if (this.weeknumber > this.numberOfWeekThisYear) {
-        this.weeknumber = 1
-        this.actualYear = parseInt(this.actualYear) + 1
-        this.numberOfWeekThisYear = this.getNumberOfWeekThisYear(this.actualYear)
+      this.weekNumber += 1
+      if (this.weekNumber > this.numberOfWeekThisYear) {
+        this.weekNumber = 1
+        this.$store.dispatch('updateActualYear', parseInt(this.$store.state.actualYear) + 1)
+        this.numberOfWeekThisYear = this.getNumberOfWeekThisYear(this.$store.state.actualYear)
         this.initializeWeeksArray()
         this.getWeekSuffix()
       }
     },
     previousWeek: function () {
-      this.weeknumber -= 1
-      if (this.weeknumber < 1) {
-        this.actualYear = parseInt(this.actualYear) - 1
-        this.weeknumber = this.getNumberOfWeekThisYear(this.actualYear)
+      this.weekNumber -= 1
+      if (this.weekNumber < 1) {
+        this.$store.dispatch('updateActualYear', parseInt(this.$store.state.actualYear) - 1)
+        this.weekNumber = this.getNumberOfWeekThisYear(this.$store.state.actualYear)
         this.initializeWeeksArray()
         this.getWeekSuffix()
       }
     },
     getWeekSelectedPeriod: function () {
-      var dateOfSelectedWeek = moment().year(this.actualYear).week(this.weeknumber).startOf('week')
+      var dateOfSelectedWeek = moment().year(this.$store.state.actualYear).week(this.$store.state.weekNumber).startOf('week')
       var startOfWeek = dateOfSelectedWeek.startOf('week').format('llll')
       var endOfWeek = dateOfSelectedWeek.endOf('week').format('llll')
       if (this.weekPickerLocale === 'fr') {
-        this.weekSelectedPeriod = 'du ' + startOfWeek + ' au ' + endOfWeek
+        this.$store.dispatch('updateWeekSelectedPeriod', 'du ' + startOfWeek + ' au ' + endOfWeek)
       } else {
-        this.weekSelectedPeriod = 'from ' + startOfWeek + ' to ' + endOfWeek
+        this.$store.dispatch('updateWeekSelectedPeriod', 'from ' + startOfWeek + ' to ' + endOfWeek)
       }
     }
   }
