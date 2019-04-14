@@ -79,6 +79,7 @@ To do list for this component :
 - [ ] Add ability to change component color to match with others components
 
 ## Changelog
+- 20190414 v0.3.2 Fix #1 From / to does not appears at page loading
 - 20190414 v0.3.0 Add Vuex implementation
 - 20190412 v0.2.0 Add 'from/to' functionnality
 - 20190412 v0.1.8 First functionnal version 
